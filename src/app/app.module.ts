@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
@@ -14,9 +14,12 @@ import { DropdownDirective } from 'src/app/shared/dropdown.directive';
 import { ShoppingEditComponent } from 'src/app/shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from 'src/app/shopping-list/shopping-list.component';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeStartComponent } from 'src/app/recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from 'src/app/recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from 'src/app/recipes/recipe.service';
+import { AuthComponent } from 'src/app/auth/auth.component';
+import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from 'src/app/auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { RecipeService } from 'src/app/recipes/recipe.service';
     ShoppingEditComponent,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,11 @@ import { RecipeService } from 'src/app/recipes/recipe.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService,RecipeService],
+  providers: [
+    ShoppingListService,
+    RecipeService, 
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
