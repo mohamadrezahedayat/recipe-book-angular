@@ -20,6 +20,8 @@ import { RecipeService } from 'src/app/recipes/recipe.service';
 import { AuthComponent } from 'src/app/auth/auth.component';
 import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from 'src/app/auth/auth-interceptor.service';
+import { AlertComponent } from 'src/app/shared/alert/alert.component';
+import { PlaceHolderDirective } from 'src/app/shared/placeHolder/placeHolder.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AuthInterceptorService } from 'src/app/auth/auth-interceptor.service';
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceHolderDirective
   ],
   imports: [
     BrowserModule,
