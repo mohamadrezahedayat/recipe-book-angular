@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Recipe } from "src/app/recipes/recipe.model";
 import { Ingredient } from "src/app/shared/ingredient.model";
 import * as ShoppingListActions from 'src/app/shopping-list/store/shopping-list.action' 
-import * as fromShoppingList from 'src/app/shopping-list/store/shopping-list.reducer';
+import * as fromApp from 'src/app/store/app.reducer';
 
 @Injectable()
 export class RecipeService{
@@ -39,7 +39,7 @@ export class RecipeService{
     this.recipesChanged.next(this.recipes.slice());
   }
 
-  constructor(private store: Store<fromShoppingList.AppState>){}
+  constructor(private store: Store<fromApp.AppState>){}
 
   getRecipes(){
     return this.recipes.slice(); // we want only a copy not same reference
