@@ -14,7 +14,10 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm:FormGroup;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService,private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private recipeService: RecipeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -80,7 +83,8 @@ export class RecipeEditComponent implements OnInit {
     })
   }
 
-  get controls() { // a getter!
+  // a getter!
+  get ingredientsControls() { 
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 
