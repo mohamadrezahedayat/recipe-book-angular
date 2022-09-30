@@ -18,8 +18,7 @@ export class AuthComponent implements OnDestroy{
 
   private closeSub: Subscription;
 
-  constructor(
-    private authService: AuthService, private router: Router){}
+  constructor( private authService: AuthService, private router: Router){}
 
   onSwitchMode(){
     this.isLoginMode = !this.isLoginMode;
