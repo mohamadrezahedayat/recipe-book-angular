@@ -25,13 +25,13 @@ export function shoppingListReducer(
     case ShoppingListActions.ADD_INGREDIENT:
       return {
         ...state,
-        Ingredients: [...state.ingredients, action.payload ]
+        ingredients: [...state.ingredients, action.payload ]
       };
 
     case ShoppingListActions.ADD_INGREDIENTS:
       return {
         ...state,
-        Ingredients: [...state.ingredients, ...action.payload ]
+        ingredients: [...state.ingredients, ...action.payload ]
       };
 
     case ShoppingListActions.UPDATE_INGREDIENT:
@@ -44,7 +44,7 @@ export function shoppingListReducer(
       updatedIngredients[state.editedIngredientIndex] = updatedIngredient;
       return {
         ...state,
-        Ingredients: updatedIngredients,
+        ingredients: updatedIngredients,
         editedIngredientIndex:-1,
         editedIngredient : null
       };
@@ -52,7 +52,7 @@ export function shoppingListReducer(
     case ShoppingListActions.DELETE_INGREDIENT:
       return {
         ...state,
-        Ingredients: state.ingredients.filter((ing,igIndex)=> igIndex !== state.editedIngredientIndex ),
+        ingredients: state.ingredients.filter((ing,igIndex)=> igIndex !== state.editedIngredientIndex ),
         editedIngredientIndex:-1,
         editedIngredient : null
       };
